@@ -1,0 +1,31 @@
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    ENV["FASTLANE_EXPLICIT_OPEN_SIMULATOR"] = "2"
+    clear_derived_data
+  end
+
+  lane :unit_test do
+    scan(
+      code_coverage: true,
+      scheme:  'TestingActions-iOS',
+      workspace: 'ActionTesting.xcworkspace'
+    )
+  end
+
+  desc "Release a new version with a patch bump_type"
+  lane :patch do
+    release("patch")
+  end
+
+  desc "Release a new version with a minor bump_type"
+  lane :minor do
+    release("minor")
+  end
+
+  desc "Release a new version with a major bump_type"
+  lane :major do
+    release("major")
+  end
+end
