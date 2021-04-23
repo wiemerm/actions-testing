@@ -3,7 +3,7 @@ name: iOS starter workflow
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
+  template_build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
 
@@ -37,7 +37,7 @@ jobs:
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
 
-  build:
+  fastlane:
     name: Build and Test using fastlane
     runs-on: macos-latest
 
