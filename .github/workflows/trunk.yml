@@ -33,10 +33,13 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v1.7.3
+        with:
+            fromTag: "1.0.0"
+            toTag: "${{ steps.bump_version.outputs.VERSION }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug changelog
-        run: echo ${{steps.github_release.outputs.changelog}}
+        run: echo "${{steps.github_release.outputs.changelog}}"
 
       - name: "Complex Configuration"
         id: build_changelog
@@ -49,7 +52,7 @@ jobs:
           toTag: ${{ steps.bump_version.outputs.VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug changelog
-        run: echo ${{steps.build_changelog.outputs.changelog}}
+        run: echo "${{steps.build_changelog.outputs.changelog}}"
 
       - name: Create a GitHub release
         uses: actions/create-release@v1
