@@ -11,16 +11,16 @@ platform :ios do
     scan(
       code_coverage: true,
       scheme:  'Workflow',
-      workspace: 'Workflow.xcworkspace'
+      workspace: 'ActionTesting.xcworkspace'
     )
   end
 
   lane :build_swiftpm do
-    sh('swift build --package-path="../Workflow" -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"')
+    sh('swift build --package-path="../ActionTesting" -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"')
   end
 
   lane :cocoapods_liblint do
-    pod_lib_lint(podspec: 'DynamicWorkflow.podspec', allow_warnings: true)
+    pod_lib_lint(podspec: 'ActionTesting.podspec', allow_warnings: true)
   end
 
   desc "Release a new version with a patch bump_type"
@@ -39,7 +39,7 @@ platform :ios do
   end
 
   def release(type)
-    podspec_name = "DynamicWorkflow.podspec"
+    podspec_name = "ActionTesting.podspec"
     version = version_bump_podspec(path: podspec_name,
                                    bump_type: type)
     puts '::set-output name=VERSION::' + version
