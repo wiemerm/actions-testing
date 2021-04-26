@@ -13,9 +13,11 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Bump version in Podspec and Plist
         id: bump_version
-        run: fastlane patch
+        run: fastlane minor
       - name: Print version
         run: echo "The version is ${{ steps.bump_version.outputs.VERSION }}"
       - name: Commit version changes
@@ -31,8 +33,6 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v1.7.3
-        with:
-          toTag: ${{ steps.bump_version.outputs.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug changelog
