@@ -17,9 +17,10 @@ jobs:
           fetch-depth: 0
       - name: Bump version in Podspec and Plist
         id: bump_version
-        run: fastlane minor
-      - name: Print version
-        run: echo "The version is ${{ steps.bump_version.outputs.VERSION }}"
+        run: |
+          fastlane minor
+          VERSION=`/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" Sources/CucumberSwift/Info.plist`
+          echo "##[set-output name=version;]$VERSION"
       - name: Commit version changes
         uses: stefanzweifel/git-auto-commit-action@v4
       - name: Bump version and push tag
@@ -28,14 +29,14 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag_prefix: ''
-          custom_tag: ${{ steps.bump_version.outputs.VERSION }}
+          custom_tag: ${{ steps.bump_version.outputs.version }}
 
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v1.7.3
         with:
             fromTag: "1.0.0"
-            toTag: "${{ steps.bump_version.outputs.VERSION }}"
+            toTag: "${{ steps.bump_version.outputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug changelog
@@ -49,7 +50,7 @@ jobs:
           owner: "Richard-Gist"
           ignorePreReleases: "false"
           fromTag: "1.0.0"
-          toTag: ${{ steps.bump_version.outputs.VERSION }}
+          toTag: ${{ steps.bump_version.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug changelog
         run: echo "${{steps.build_changelog.outputs.changelog}}"
