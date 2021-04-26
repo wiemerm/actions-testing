@@ -34,7 +34,6 @@ jobs:
           configuration: "configuration_complex.json"
           owner: "Richard-Gist"
           ignorePreReleases: "false"
-          fromTag: "1.0.0"
           toTag: ${{ steps.bump_version.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug changelog
