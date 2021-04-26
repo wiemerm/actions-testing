@@ -1,4 +1,5 @@
-default_platform(:ios)
+fastlane_version "2.27.0"
+default_platform :ios
 
 platform :ios do
   before_all do
@@ -9,9 +10,17 @@ platform :ios do
   lane :unit_test do
     scan(
       code_coverage: true,
-      scheme:  'TestingActions-iOS',
+      scheme:  'Workflow',
       workspace: 'ActionTesting.xcworkspace'
     )
+  end
+
+  lane :build_swiftpm do
+    sh('swift build --package-path="../ActionTesting" -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"')
+  end
+
+  lane :cocoapods_liblint do
+    pod_lib_lint(podspec: 'ActionTesting.podspec', allow_warnings: true)
   end
 
   desc "Release a new version with a patch bump_type"
@@ -27,5 +36,18 @@ platform :ios do
   desc "Release a new version with a major bump_type"
   lane :major do
     release("major")
+  end
+
+  def release(type)
+    podspec_name = "ActionTesting.podspec"
+    version = version_bump_podspec(path: podspec_name,
+                                   bump_type: type)
+    puts '::set-output name=VERSION::' + version
+    update_plist(
+      plist_path: "Workflow/Info.plist",
+      block: proc do |plist|
+        plist[:CFBundleVersion] = version
+      end
+    )
   end
 end

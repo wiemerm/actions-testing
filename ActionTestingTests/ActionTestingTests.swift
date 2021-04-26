@@ -1,14 +1,14 @@
 //
-//  TestingActions_iOSTests.swift
-//  TestingActions-iOSTests
+//  ActionTestingTests.swift
+//  ActionTestingTests
 //
-//  Created by Richard Gist on 4/23/21.
+//  Created by Richard Gist on 4/26/21.
 //
 
 import XCTest
-@testable import TestingActions_iOS
+@testable import ActionTesting
 
-class TestingActions_iOSTests: XCTestCase {
+class ActionTestingTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,8 +23,11 @@ class TestingActions_iOSTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testNewTest() throws {
-        XCTAssert(true, "Useless test being added.")
+    func testPerformanceExample() throws {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
     }
 
 }

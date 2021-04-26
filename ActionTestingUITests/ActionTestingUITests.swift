@@ -1,13 +1,13 @@
 //
-//  TestingActions_iOSUITests.swift
-//  TestingActions-iOSUITests
+//  ActionTestingUITests.swift
+//  ActionTestingUITests
 //
-//  Created by Richard Gist on 4/23/21.
+//  Created by Richard Gist on 4/26/21.
 //
 
 import XCTest
 
-class TestingActions_iOSUITests: XCTestCase {
+class ActionTestingUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
