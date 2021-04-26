@@ -2,23 +2,23 @@
     "categories": [
       {
         "title": "## 🚀 Features",
-        "labels": ["feature"]
+        "labels": ["enhancement"]
       },
       {
         "title": "## 🐛 Fixes",
-        "labels": ["fix"]
+        "labels": ["bug"]
       },
       {
-        "title": "## 🧪 Tests",
-        "labels": ["test"]
+        "title": "## 🧪 Documentation",
+        "labels": ["documentation"]
       }
     ],
     "ignore_labels": [
-      "ignore"
+      "invalid"
     ],
     "sort": "ASC",
     "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>",
-    "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
+    "pr_template": "- #${{NUMBER}} - ${{TITLE}}",
     "empty_template": "- no changes",
     "label_extractor": [
       {
