@@ -51,7 +51,7 @@ jobs:
   version_bump:
     runs-on: macos-latest
     needs: [ test, sonar_scan, build_for_package_managers ]
-    if: ${{ github.event.pull_request.merged == 'true' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
         with:
