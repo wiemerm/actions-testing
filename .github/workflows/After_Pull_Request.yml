@@ -34,3 +34,8 @@ jobs:
     if: ${{ github.event.push.repository.fork == false }}
     steps:
       - run: echo Is this a spoon?
+  from-tyler:
+    runs-on: ubuntu-latest
+    if: github.repository == ‘Richard-Gist/actions-testing’
+    steps:
+      - run: echo this is running on the original repository
