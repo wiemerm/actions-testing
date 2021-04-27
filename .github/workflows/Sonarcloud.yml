@@ -6,7 +6,7 @@ name: Run super secret sonarcloud stuff
 # or API.
 on:
   workflow_dispatch:
-  pull_request:
+  pull_request_target:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
