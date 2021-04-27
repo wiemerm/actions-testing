@@ -6,7 +6,9 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Job step for debug
+        run: echo Tested the code
+      # - uses: actions/checkout@v2
   #     - name: Run TESTS
   #       run: fastlane unit_test
   #     - name: Generate SonarCloud Friendly Coverage Report
@@ -22,9 +24,11 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - name: Job step for debug
+        run: echo Scanned with sonar
+      # - uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
   #     - name: Download Coverage Report
   #       uses: actions/download-artifact@v2
   #       with:
@@ -42,7 +46,9 @@ jobs:
     needs: test
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Job step for debug
+        run: echo Built packages
+      # - uses: actions/checkout@v2
   #     - name: Validate SwiftPM BUILDs
   #       run: fastlane build_swiftpm
   #     - name: Validate Cocoapods Can Deploy (lib lint)
