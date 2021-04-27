@@ -6,7 +6,7 @@ name: Run super secret sonarcloud stuff
 # or API.
 on:
   workflow_dispatch:
-  push:
+  pull_request:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,14 +23,14 @@ jobs:
         echo "Hello2 ${{ secrets.PAT }}"
         echo "Hello3 ${{ secrets.PAT }}"
   
-  careless_job_with_secret:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: This one exposes secrets
-      run: | 
-        echo "${{ secrets.PAT }}"
-        echo "${{ secrets.PAT }}" | base64
-        echo "${{ secrets.PAT }}" | base64 | base64 --decode
+#   careless_job_with_secret:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+#     # Runs a single command using the runners shell
+#     - name: This one exposes secrets
+#       run: | 
+#         echo "${{ secrets.PAT }}"
+#         echo "${{ secrets.PAT }}" | base64
+#         echo "${{ secrets.PAT }}" | base64 | base64 --decode
