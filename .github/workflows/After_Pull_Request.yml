@@ -6,7 +6,7 @@ name: After pull request
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   workflow_run:
-    workflows: [ "Verify Pull Request" ]
+    workflows: [ "Verify Pull Request", "Run super secret sonarcloud stuff" ]
 #     branches: [ main ]
     types: [ completed ]
 
