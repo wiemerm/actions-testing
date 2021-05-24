@@ -42,11 +42,8 @@ platform :ios do
     podspec_name = "ActionTesting.podspec"
     version = version_bump_podspec(path: podspec_name,
                                    bump_type: type)
-    update_plist(
-      plist_path: "ActionTesting/Info.plist",
-      block: proc do |plist|
-        plist[:CFBundleVersion] = version
-      end
-    )
+    echo(message: "Version: #{version}")
+    echo(message: "##[set-output name=version;]#{version}")
+    echo(message: "::set-output name=version::#{version}")
   end
 end
