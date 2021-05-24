@@ -18,11 +18,14 @@ jobs:
         id: bump_version
         run: |
           fastlane patch
+          echo "##[set-output name=version1;]3.0.0"
+          echo "::set-output name=version2::3.0.1"
+      - name: Check versions
+        id: version_checking
+        run: |
           echo "The version is ${{ steps.bump_version.outputs.version }}"
-          echo "##[set-output name=version;]3.0.0"
-          echo "The version is ${{ steps.bump_version.outputs.version }}"
-          echo "::set-output name=version::3.0.1"
-          echo "The version is ${{ steps.bump_version.outputs.version }}"
+          echo "The version is ${{ steps.bump_version.outputs.version1 }}"
+          echo "The version is ${{ steps.bump_version.outputs.version2 }}"
 #       - name: Commit version changes
 #         uses: stefanzweifel/git-auto-commit-action@v4
 #         with:
