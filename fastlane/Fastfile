@@ -43,7 +43,7 @@ platform :ios do
     version = version_bump_podspec(path: podspec_name,
                                    bump_type: type)
     echo(message: "Version: #{version}")
-    echo(message: "##[set-output name=version;]#{version}")
-    echo(message: "::set-output name=version::#{version}")
+    echo(message: "##[set-output name=version1;]#{version}")
+    echo(message: "::set-output name=version2::#{version}")
   end
 end

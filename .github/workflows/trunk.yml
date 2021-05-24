@@ -18,8 +18,6 @@ jobs:
         id: bump_version
         run: |
           fastlane patch
-          echo "##[set-output name=version1;]3.0.0"
-          echo "::set-output name=version2::3.0.1"
       - name: Check versions
         id: version_checking
         run: |
