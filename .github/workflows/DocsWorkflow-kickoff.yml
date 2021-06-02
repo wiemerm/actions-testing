@@ -8,7 +8,7 @@ jobs:
   kickoff:
     runs-on: ubuntu-latest
     steps:
-      - run: echo generating docs?
+      - run: mkdir docs
       - uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           branch: "documentation"
