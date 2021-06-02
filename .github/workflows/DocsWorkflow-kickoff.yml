@@ -1,0 +1,10 @@
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  workflow_run:
+    workflows: [ "Entered Main" ]
+    types: [ completed ]
+  jobs:
+    kickoff:
+      runs-on: ubuntu-latest
+      steps:
+        - run: echo Should merge to documentation?
