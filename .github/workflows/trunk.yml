@@ -1,0 +1,50 @@
+name: Version Bump
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [ "CI" ]
+    branches: [ main ]
+    types: [ completed ]
+
+jobs:
+  version_bump:
+    runs-on: macos-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.pull_request.merged == 'true' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT }}
+      - name: Bump version in Podspec and Plist
+        id: bump_version
+        run: |
+          fastlane minor
+          VERSION=`/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" ActionTesting/Info.plist`
+          echo "##[set-output name=version;]$VERSION"
+      - name: Commit version changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[ci skip] Apply automatic changes"
+          tagging_message: "${{ steps.bump_version.outputs.version }}"
+      - name: Build Changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v1.7.3
+        with:
+          configuration: ".github/configuration_complex.json"
+          owner: "Richard-Gist"
+          ignorePreReleases: "false"
+          toTag: ${{ steps.bump_version.outputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug changelog
+        run: echo "${{steps.build_changelog.outputs.changelog}}"
+
+      - name: Create a GitHub release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.bump_version.outputs.version }}
+          release_name: Release ${{ steps.bump_version.outputs.version }}
+          body: ${{steps.build_changelog.outputs.changelog}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        

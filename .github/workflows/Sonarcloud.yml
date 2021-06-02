@@ -1,0 +1,70 @@
+# This is a basic workflow that is manually triggered
+
+name: Run super secret sonarcloud stuff
+
+# Controlasdfdsas when thfdsasdfsasdfe action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  job_with_secret:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: This one does not expose secrets
+      run: |
+        echo "Hello1 ${{ secrets.PAT }}"
+        echo "Hello2 ${{ secrets.PAT }}"
+        echo "Hello3 ${{ secrets.PAT }}"
+  
+#   careless_job_with_secret:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+#     # Runs a single command using the runners shell
+#     - name: This one exposes secrets
+#       run: | 
+#         echo "${{ secrets.PAT }}"
+#         echo "${{ secrets.PAT }}" | base64
+#         echo "${{ secrets.PAT }}" | base64 | base64 --decode
+
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: | 
+          echo Success!
+          echo ${{ github.event.push.repository.fork }}
+          echo ${{ github.event.push.repository }}
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo Failure!!!!!!!
+  # This workflow contains a single job called "build"
+  on-forked:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.push.repository.fork == true }}
+    steps:
+      - run: |
+          echo This was a fork
+          echo ${{ github.event.push.repository.fork }}
+          echo ${{ github.event.push.repository.fork }}
+  not-forked:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.push.repository.fork == false }}
+    steps:
+      - run: echo Is this a spoon?
+  from-tyler:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'Richard-Gist/actions-testing' }}
+    steps:
+      - run: echo this is running on the original repository

@@ -1,0 +1,13 @@
+# This workflow should run for PRs
+# It should be safe and secure to do so.
+
+name: Verify Pull Request
+on: 
+  pull_request:
+    types: [opened, edited, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Verified!

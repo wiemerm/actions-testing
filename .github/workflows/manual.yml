@@ -1,0 +1,15 @@
+# This is a basic workflow that is manually triggered
+
+name: Entered Main
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+ push:
+  branches: [ main ]
+
+jobs:
+  rev_things:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo We revved the something or other
