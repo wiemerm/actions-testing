@@ -11,12 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: mkdir docs
-      - run: echo This is a custom index > docs/index.md
+      - run: |
+          mkdir docs
+          echo This is a custom index > docs/index.md
       - uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
-          branch: "documentation"
-          folder: "docs"
+          branch: gh-pages
+          folder: docs
           # If you would like to push the contents of the deployment folder into a specific directory on the deployment branch you can specify it here.
           commit-message: "Deploying docs"
           # If your project generates hashed files on build you can use this option to automatically delete them from the target folder on the deployment branch with each deploy. This option is on by default and can be toggled off by setting it to false.
