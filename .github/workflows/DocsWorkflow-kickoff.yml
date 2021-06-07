@@ -13,8 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          mkdir docs
-          echo theme: jekyll-theme-merlot > docs/_config.yml
           echo This is a custom index at root \[README\]\(readme.md\) > docs/readme.md
           cat README.md > docs/index.md
           mkdir docs/docs
