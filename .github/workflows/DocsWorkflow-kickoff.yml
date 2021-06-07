@@ -1,3 +1,4 @@
+name: Generate and Publish docs
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   workflow_run:
@@ -14,6 +15,8 @@ jobs:
       - run: |
           mkdir docs
           echo This is a custom index at root > docs/index.md
+          mkdir docs/docs
+          echo This is nested inside docs to see if this picks up as root > docs/docs/index.md
       - uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           branch: gh-pages
