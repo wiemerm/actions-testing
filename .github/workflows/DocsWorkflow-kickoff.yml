@@ -15,8 +15,8 @@ jobs:
       - run: |
           mkdir docs
           echo theme: jekyll-theme-merlot > docs/_config.yml
-          echo This is a custom index at root \[README\]\(readme.md\) > docs/index.md
-          cat README.md > docs/readme.md
+          echo This is a custom index at root \[README\]\(readme.md\) > docs/readme.md
+          cat README.md > docs/index.md
           mkdir docs/docs
           echo This is nested inside docs to see if this picks up as root > docs/docs/index.md
       - uses: JamesIves/github-pages-deploy-action@4.1.3
