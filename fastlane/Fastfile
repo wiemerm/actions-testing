@@ -10,7 +10,7 @@ platform :ios do
   lane :unit_test do
     scan(
       code_coverage: true,
-      scheme:  'Workflow',
+      scheme:  'ActionTesting',
       workspace: 'ActionTesting.xcworkspace'
     )
   end
