@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6FC55A4BFDAFC2EFDB5BCC82 /* Pods_ActionTestingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4014E202540CEB680EAD84E0 /* Pods_ActionTestingTests.framework */; };
+		B6858A5E267A851900708428 /* SimpleStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6858A5D267A851900708428 /* SimpleStruct.swift */; };
+		B6858A63267A852A00708428 /* SimpleStructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6858A62267A852A00708428 /* SimpleStructTest.swift */; };
 		C9E56847C79CFC71927F3A74 /* Pods_ActionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2BA9EF96514E0491745273 /* Pods_ActionTesting.framework */; };
 		D79FBC172637368A00C7622F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FBC162637368A00C7622F /* AppDelegate.swift */; };
 		D79FBC192637368A00C7622F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FBC182637368A00C7622F /* SceneDelegate.swift */; };
@@ -46,6 +48,8 @@
 		9AB6F5FEA621130ACB40BC6F /* Pods-ActionTesting-ActionTestingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionTesting-ActionTestingUITests.debug.xcconfig"; path = "Target Support Files/Pods-ActionTesting-ActionTestingUITests/Pods-ActionTesting-ActionTestingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C2BA9EF96514E0491745273 /* Pods_ActionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6394D8F2F916F9DF1D890E1 /* Pods-ActionTestingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionTestingTests.debug.xcconfig"; path = "Target Support Files/Pods-ActionTestingTests/Pods-ActionTestingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6858A5D267A851900708428 /* SimpleStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStruct.swift; sourceTree = "<group>"; };
+		B6858A62267A852A00708428 /* SimpleStructTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStructTest.swift; sourceTree = "<group>"; };
 		D79FBC132637368A00C7622F /* ActionTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActionTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79FBC162637368A00C7622F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79FBC182637368A00C7622F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				D79FBC1F2637368C00C7622F /* Assets.xcassets */,
 				D79FBC212637368C00C7622F /* LaunchScreen.storyboard */,
 				D79FBC242637368C00C7622F /* Info.plist */,
+				B6858A5D267A851900708428 /* SimpleStruct.swift */,
 			);
 			path = ActionTesting;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			children = (
 				D79FBC2D2637368C00C7622F /* ActionTestingTests.swift */,
 				D79FBC2F2637368C00C7622F /* Info.plist */,
+				B6858A62267A852A00708428 /* SimpleStructTest.swift */,
 			);
 			path = ActionTestingTests;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6858A5E267A851900708428 /* SimpleStruct.swift in Sources */,
 				D79FBC1B2637368A00C7622F /* ViewController.swift in Sources */,
 				D79FBC172637368A00C7622F /* AppDelegate.swift in Sources */,
 				D79FBC192637368A00C7622F /* SceneDelegate.swift in Sources */,
@@ -380,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6858A63267A852A00708428 /* SimpleStructTest.swift in Sources */,
 				D79FBC2E2637368C00C7622F /* ActionTestingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
