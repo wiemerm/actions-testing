@@ -11,5 +11,4 @@ So maybe then I can build out the root page here? And that would mean you could 
 [Link to a post]({% link _posts/2016-07-26-name-of-post.md %})
 [Link to index]({% link readme.md %})
 [Link to sub index]({% link docs/index.md %})
-
 Will Codecov run if this is coming in off a forked branch?
